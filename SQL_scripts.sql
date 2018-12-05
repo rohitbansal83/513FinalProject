@@ -51,13 +51,13 @@ CREATE TABLE menu (
 CREATE TABLE menuitem (
     id integer NOT NULL CONSTRAINT menuitem_pk PRIMARY KEY,
     menu_page_id integer NOT NULL,
-    price real NOT NULL,
+    price real ,
     high_price real,
     dish_id integer NOT NULL,
-    created_at datetime NOT NULL,
+    created_at datetime ,
     updated_at datetime,
-    xpos real NOT NULL,
-    ypos real NOT NULL,
+    xpos real ,
+    ypos real ,
     created_date datetime ,
     updated_date datetime,
     CONSTRAINT menuitem_menupage FOREIGN KEY (menu_page_id)
