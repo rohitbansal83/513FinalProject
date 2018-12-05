@@ -58,6 +58,8 @@ CREATE TABLE menuitem (
     updated_at datetime,
     xpos real NOT NULL,
     ypos real NOT NULL,
+    created_date datetime ,
+    updated_date datetime,
     CONSTRAINT menuitem_menupage FOREIGN KEY (menu_page_id)
     REFERENCES menupage (id),
     CONSTRAINT menuitem_dish FOREIGN KEY (dish_id)
