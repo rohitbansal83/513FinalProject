@@ -1,0 +1,64 @@
+# @begin NYPL_DataCleanup  @desc Workflow for cleaning NYPL Menus DataSet
+# @in Menu.csv  @uri file://rawdata/Menu.csv
+# @in Dish.csv  @uri file://rawdata/Dish.csv
+# @in MenuItem.csv  @uri file://rawdata/MenuItem.csv
+# @in MenuPage.csv  @uri file://rawdata/MenuPage.csv
+
+#     @begin OpenRefineMenuDataCleanup  @desc Use OpenRefine to clean Menu.csv
+#     @in Menu.csv  @uri file://rawdata/Menu.cv
+#     @param menuCleaningOperationsSequence
+#     @out CleanMenu.csv  @uri file://OpenRefine/DataClean_Menu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin OpenRefineDishDataCleanup  @desc Use OpenRefine to clean Dish.csv
+#     @in Dish.csv  @uri file://rawdata/Dish.cv
+#     @param dishCleaningOperationsSequence
+#     @out CleanDish.csv  @uri file://OpenRefine/DataClean_Dish.csv
+#     @end OpenRefineDishDataCleanup
+
+#     @begin OpenRefineMenuItemDataCleanup  @desc Use OpenRefine to clean MenuItem.csv
+#     @in MenuItem.csv  @uri file:///MenuItem.cv
+#     @param menuItemCleaningOperationsSequence
+#     @out CleanMenuItem.csv  @uri file://OpenRefine/DataClean_MenuItem.csv
+#     @end OpenRefineMenuItemDataCleanup
+
+#     @begin SQLOperationsOnMenu  @desc Create Menu table and populate it from csv file in SQLite
+#     @in CleanMenu.csv  @uri file://OpenRefine/DataClean_Menu.csv
+#     @param menuSQLScript
+#     @out Menu  @uri sqlite://nypl.db/Menu
+#     @end SQLOperationsOnMenu
+
+#     @begin SQLOperationsOnDish  @desc Create Dish table and populate it from csv file in SQLite
+#     @in CleanDish.csv  @uri file://OpenRefine/DataClean_Dish.csv
+#     @param dishSQLScript
+#     @out Dish  @uri sqlite://nypl.db/Dish
+#     @end SQLOperationsOnDish
+
+#     @begin SQLOperationsOnMenuItem  @desc Create MenuItem table and populate it from csv file in SQLite
+#     @in CleanMenuItem.csv  @uri file://OpenRefine/DataClean_MenuItem.csv
+#     @param menuItemSQLScript
+#     @out MenuItem  @uri sqlite://nypl.db/MenuItem
+#     @end SQLOperationsOnMenuItem
+
+#     @begin SQLOperationsOnMenuPage  @desc Create MenuPage table and populate it from csv file in SQLite
+#     @in MenuPage.csv  @uri file://rawdata/MenuPage.csv
+#     @param menuPageSQLScript
+#     @out MenuPage  @uri sqlite://nypl.db/MenuPage
+#     @end SQLOperationsOnMenuPage
+
+#     @begin IntegrityConstraintsCheck  @desc Apply logical inegrity constraints on the data in the tables
+#     @in Menu  @uri sqlite://nypl.db/Menu
+#     @in Dish  @uri sqlite://nypl.db/Dish
+#     @in MenuPage  @uri sqlite://nypl.db/MenuPage
+#     @in MenuItem  @uri sqlite://nypl.db/MenuItem
+#     @param IntegrityConstraintsScript
+#     @out Menu  @uri sqlite://nypl.db/Menu
+#     @out Dish  @uri sqlite://nypl.db/Dish
+#     @out MenuItem  @uri sqlite://nypl.db/MenuItem
+#     @out MenuPage  @uri sqlite://nypl.db/MenuPage
+#     @end IntegrityConstraintsCheck
+# @out Menu  @uri sqlite://nypl.db/Menu
+# @out Dish  @uri sqlite://nypl.db/Dish
+# @out MenuItem  @uri sqlite://nypl.db/MenuItem
+# @out MenuPage  @uri sqlite://nypl.db/MenuPage
+# @end NYPL_DataCleanup
