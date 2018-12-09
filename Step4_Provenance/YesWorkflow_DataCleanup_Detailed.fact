@@ -1,0 +1,495 @@
+
+% FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
+program(1, 'NYPL_Detailed_Cleanup', 'NYPL_Detailed_Cleanup', 1, 140).
+program(2, 'PythonMenuDataCleanup', 'NYPL_Detailed_Cleanup.PythonMenuDataCleanup', 11, 18).
+program(3, 'Step1OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step1OpenRefineMenuDataCleanup', 19, 25).
+program(4, 'Step2OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step2OpenRefineMenuDataCleanup', 26, 32).
+program(5, 'Step3OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step3OpenRefineMenuDataCleanup', 33, 39).
+program(6, 'Step4OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step4OpenRefineMenuDataCleanup', 40, 46).
+program(7, 'Step5penRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step5penRefineMenuDataCleanup', 47, 53).
+program(8, 'Step6OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step6OpenRefineMenuDataCleanup', 54, 60).
+program(9, 'Step7OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step7OpenRefineMenuDataCleanup', 61, 67).
+program(10, 'Step8OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step8OpenRefineMenuDataCleanup', 68, 74).
+program(11, 'Step9OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step9OpenRefineMenuDataCleanup', 75, 81).
+program(12, 'Step10OpenRefineMenuDataCleanup', 'NYPL_Detailed_Cleanup.Step10OpenRefineMenuDataCleanup', 82, 88).
+program(13, 'PythonDishDataCleanup', 'NYPL_Detailed_Cleanup.PythonDishDataCleanup', 89, 96).
+program(14, 'Step1OpenRefineDishDataCleanup', 'NYPL_Detailed_Cleanup.Step1OpenRefineDishDataCleanup', 97, 103).
+program(15, 'Step2OpenRefineDishDataCleanup', 'NYPL_Detailed_Cleanup.Step2OpenRefineDishDataCleanup', 104, 110).
+program(16, 'Step1OpenRefineMenuItemDataCleanup', 'NYPL_Detailed_Cleanup.Step1OpenRefineMenuItemDataCleanup', 111, 118).
+program(17, 'Step2OpenRefineMenuItemDataCleanup', 'NYPL_Detailed_Cleanup.Step2OpenRefineMenuItemDataCleanup', 119, 125).
+program(18, 'Step3OpenRefineMenuItemDataCleanup', 'NYPL_Detailed_Cleanup.Step3OpenRefineMenuItemDataCleanup', 126, 132).
+program(19, 'Step4OpenRefineMenuItemDataCleanup', 'NYPL_Detailed_Cleanup.Step4OpenRefineMenuItemDataCleanup', 133, 139).
+
+% FACT: workflow(program_id).
+workflow(1).
+
+% FACT: function(program_id).
+
+% FACT: has_subprogram(program_id, subprogram_id).
+has_subprogram(1, 2).
+has_subprogram(1, 3).
+has_subprogram(1, 4).
+has_subprogram(1, 5).
+has_subprogram(1, 6).
+has_subprogram(1, 7).
+has_subprogram(1, 8).
+has_subprogram(1, 9).
+has_subprogram(1, 10).
+has_subprogram(1, 11).
+has_subprogram(1, 12).
+has_subprogram(1, 13).
+has_subprogram(1, 14).
+has_subprogram(1, 15).
+has_subprogram(1, 16).
+has_subprogram(1, 17).
+has_subprogram(1, 18).
+has_subprogram(1, 19).
+
+% FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
+port(1, 'in', 'Menu.csv', 'NYPL_Detailed_Cleanup<-Menu.csv', 3, 1).
+port(2, 'in', 'Dish.csv', 'NYPL_Detailed_Cleanup<-Dish.csv', 5, 2).
+port(3, 'in', 'MenuItem.csv', 'NYPL_Detailed_Cleanup<-MenuItem.csv', 7, 3).
+port(4, 'in', 'MenuPage.csv', 'NYPL_Detailed_Cleanup<-MenuPage.csv', 9, 4).
+port(5, 'in', 'Menu.csv', 'NYPL_Detailed_Cleanup.PythonMenuDataCleanup<-Menu.csv', 13, 5).
+port(6, 'param', 'menuCleaningOperationsSequence', 'NYPL_Detailed_Cleanup.PythonMenuDataCleanup<-menuCleaningOperationsSequence', 15, 6).
+port(7, 'out', 'Menu-clean.csv', 'NYPL_Detailed_Cleanup.PythonMenuDataCleanup->Menu-clean.csv', 16, 7).
+port(8, 'in', 'Menu-clean.csv', 'NYPL_Detailed_Cleanup.Step1OpenRefineMenuDataCleanup<-Menu-clean.csv', 21, 7).
+port(9, 'out', 'Step1DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step1OpenRefineMenuDataCleanup->Step1DataCleanMenu.csv', 23, 8).
+port(10, 'in', 'Step1DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step2OpenRefineMenuDataCleanup<-Step1DataCleanMenu.csv', 28, 8).
+port(11, 'out', 'Step2DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step2OpenRefineMenuDataCleanup->Step2DataCleanMenu.csv', 30, 9).
+port(12, 'in', 'Step2DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step3OpenRefineMenuDataCleanup<-Step2DataCleanMenu.csv', 35, 9).
+port(13, 'out', 'Step3DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step3OpenRefineMenuDataCleanup->Step3DataCleanMenu.csv', 37, 10).
+port(14, 'in', 'Step3DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step4OpenRefineMenuDataCleanup<-Step3DataCleanMenu.csv', 42, 10).
+port(15, 'out', 'Step4DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step4OpenRefineMenuDataCleanup->Step4DataCleanMenu.csv', 44, 11).
+port(16, 'in', 'Step4DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step5penRefineMenuDataCleanup<-Step4DataCleanMenu.csv', 49, 11).
+port(17, 'out', 'Step5DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step5penRefineMenuDataCleanup->Step5DataCleanMenu.csv', 51, 12).
+port(18, 'in', 'Step5DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step6OpenRefineMenuDataCleanup<-Step5DataCleanMenu.csv', 56, 12).
+port(19, 'out', 'Step6DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step6OpenRefineMenuDataCleanup->Step6DataCleanMenu.csv', 58, 13).
+port(20, 'in', 'Step6DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step7OpenRefineMenuDataCleanup<-Step6DataCleanMenu.csv', 63, 13).
+port(21, 'out', 'Step7DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step7OpenRefineMenuDataCleanup->Step7DataCleanMenu.csv', 65, 14).
+port(22, 'in', 'Step7DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step8OpenRefineMenuDataCleanup<-Step7DataCleanMenu.csv', 70, 14).
+port(23, 'out', 'Step8DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step8OpenRefineMenuDataCleanup->Step8DataCleanMenu.csv', 72, 15).
+port(24, 'in', 'Step8DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step9OpenRefineMenuDataCleanup<-Step8DataCleanMenu.csv', 77, 15).
+port(25, 'out', 'Step9DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step9OpenRefineMenuDataCleanup->Step9DataCleanMenu.csv', 79, 16).
+port(26, 'in', 'Step9DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step10OpenRefineMenuDataCleanup<-Step9DataCleanMenu.csv', 84, 16).
+port(27, 'out', 'DataCleanMenu.csv', 'NYPL_Detailed_Cleanup.Step10OpenRefineMenuDataCleanup->DataCleanMenu.csv', 86, 17).
+port(28, 'in', 'Dish.csv', 'NYPL_Detailed_Cleanup.PythonDishDataCleanup<-Dish.csv', 91, 18).
+port(29, 'param', 'dishCleaningOperationsSequence', 'NYPL_Detailed_Cleanup.PythonDishDataCleanup<-dishCleaningOperationsSequence', 93, 19).
+port(30, 'out', 'Dish-clean.csv', 'NYPL_Detailed_Cleanup.PythonDishDataCleanup->Dish-clean.csv', 94, 20).
+port(31, 'in', 'Dish-clean.csv', 'NYPL_Detailed_Cleanup.Step1OpenRefineDishDataCleanup<-Dish-clean.csv', 99, 20).
+port(32, 'out', 'Step1DataCleanDish.csv', 'NYPL_Detailed_Cleanup.Step1OpenRefineDishDataCleanup->Step1DataCleanDish.csv', 101, 21).
+port(33, 'in', 'Step1DataCleanDish.csv', 'NYPL_Detailed_Cleanup.Step2OpenRefineDishDataCleanup<-Step1DataCleanDish.csv', 106, 21).
+port(34, 'out', 'DataCleanDish.csv', 'NYPL_Detailed_Cleanup.Step2OpenRefineDishDataCleanup->DataCleanDish.csv', 108, 22).
+port(35, 'in', 'MenuItem.csv', 'NYPL_Detailed_Cleanup.Step1OpenRefineMenuItemDataCleanup<-MenuItem.csv', 113, 23).
+port(36, 'param', 'menuItemCleaningOperationsSequence', 'NYPL_Detailed_Cleanup.Step1OpenRefineMenuItemDataCleanup<-menuItemCleaningOperationsSequence', 115, 24).
+port(37, 'out', 'Step1DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup.Step1OpenRefineMenuItemDataCleanup->Step1DataCleanMenuItem.csv', 116, 25).
+port(38, 'in', 'Step1DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup.Step2OpenRefineMenuItemDataCleanup<-Step1DataCleanMenuItem.csv', 121, 25).
+port(39, 'out', 'Step2DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup.Step2OpenRefineMenuItemDataCleanup->Step2DataCleanMenuItem.csv', 123, 26).
+port(40, 'in', 'Step2DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup.Step3OpenRefineMenuItemDataCleanup<-Step2DataCleanMenuItem.csv', 128, 26).
+port(41, 'out', 'Step3DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup.Step3OpenRefineMenuItemDataCleanup->Step3DataCleanMenuItem.csv', 130, 27).
+port(42, 'in', 'Step3DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup.Step4OpenRefineMenuItemDataCleanup<-Step3DataCleanMenuItem.csv', 135, 27).
+port(43, 'out', 'DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup.Step4OpenRefineMenuItemDataCleanup->DataCleanMenuItem.csv', 137, 28).
+
+% FACT: port_alias(port_id, alias).
+
+% FACT: port_uri_template(port_id, uri).
+port_uri_template(1, 'file://rawdata/Menu.csv').
+port_uri_template(2, 'file://rawdata/Dish.csv').
+port_uri_template(3, 'file://rawdata/MenuItem.csv').
+port_uri_template(4, 'file://rawdata/MenuPage.csv').
+port_uri_template(5, 'file://rawdata/Menu.csv').
+port_uri_template(7, 'file://Clean_Data/Menu-clean.csv').
+port_uri_template(8, 'file://Clean_Data/Menu-clean.csv').
+port_uri_template(9, 'file://OpenRefine/Step1DataCleanMenu.csv').
+port_uri_template(10, 'file://Clean_Data/Step1DataCleanMenu.csv').
+port_uri_template(11, 'file://OpenRefine/Step2DataCleanMenu.csv').
+port_uri_template(12, 'file://Clean_Data/Step2DataCleanMenu.csv').
+port_uri_template(13, 'file://OpenRefine/Step3DataCleanMenu.csv').
+port_uri_template(14, 'file://Clean_Data/Step3DataCleanMenu.csv').
+port_uri_template(15, 'file://OpenRefine/Step4DataCleanMenu.csv').
+port_uri_template(16, 'file://Step4DataCleanMenu.csv').
+port_uri_template(17, 'file://OpenRefine/Step5DataCleanMenu.csv').
+port_uri_template(18, 'file://Clean_Data/Step5DataCleanMenu.csv').
+port_uri_template(19, 'file://OpenRefine/DataCleanMenu.csv').
+port_uri_template(20, 'file://Clean_Data/Step6DataCleanMenu.csv').
+port_uri_template(21, 'file://OpenRefine/Step7DataCleanMenu.csv').
+port_uri_template(22, 'file://Clean_Data/Step7DataCleanMenu.csv').
+port_uri_template(23, 'file://OpenRefine/Step8DataCleanMenu.csv').
+port_uri_template(24, 'file://Clean_Data/Step8DataCleanMenu.csv').
+port_uri_template(25, 'file://OpenRefine/Step9DataCleanMenu.csv').
+port_uri_template(26, 'file://Clean_Data/Step9DataCleanMenu.csv').
+port_uri_template(27, 'file://OpenRefine/DataCleanMenu.csv').
+port_uri_template(28, 'file://rawdata/Dish.csv').
+port_uri_template(30, 'file://Clean_Data/Dish-clean.csv').
+port_uri_template(31, 'file://Clean_Data/Dish-clean.csv').
+port_uri_template(32, 'file://OpenRefine/Step1DataCleanDish.csv').
+port_uri_template(33, 'file://Clean_Data/Step1DataCleanDish.csv').
+port_uri_template(34, 'file://OpenRefine/DataCleanDish.csv').
+port_uri_template(35, 'file:///MenuItem.csv').
+port_uri_template(37, 'file://OpenRefine/Step1DataCleanMenuItem.csv').
+port_uri_template(38, 'file:///Step1DataCleanMenuItem.csv').
+port_uri_template(39, 'file://OpenRefine/Step2DataCleanMenuItem.csv').
+port_uri_template(40, 'file:///Step2DataCleanMenuItem.csv').
+port_uri_template(41, 'file://OpenRefine/Step3DataCleanMenuItem.csv').
+port_uri_template(42, 'file:///Step3DataCleanMenuItem.csv').
+port_uri_template(43, 'file://OpenRefine/DataCleanMenuItem.csv').
+
+% FACT: has_in_port(block_id, port_id).
+has_in_port(1, 1).
+has_in_port(1, 2).
+has_in_port(1, 3).
+has_in_port(1, 4).
+has_in_port(2, 5).
+has_in_port(2, 6).
+has_in_port(3, 8).
+has_in_port(4, 10).
+has_in_port(5, 12).
+has_in_port(6, 14).
+has_in_port(7, 16).
+has_in_port(8, 18).
+has_in_port(9, 20).
+has_in_port(10, 22).
+has_in_port(11, 24).
+has_in_port(12, 26).
+has_in_port(13, 28).
+has_in_port(13, 29).
+has_in_port(14, 31).
+has_in_port(15, 33).
+has_in_port(16, 35).
+has_in_port(16, 36).
+has_in_port(17, 38).
+has_in_port(18, 40).
+has_in_port(19, 42).
+
+% FACT: has_out_port(block_id, port_id).
+has_out_port(2, 7).
+has_out_port(3, 9).
+has_out_port(4, 11).
+has_out_port(5, 13).
+has_out_port(6, 15).
+has_out_port(7, 17).
+has_out_port(8, 19).
+has_out_port(9, 21).
+has_out_port(10, 23).
+has_out_port(11, 25).
+has_out_port(12, 27).
+has_out_port(13, 30).
+has_out_port(14, 32).
+has_out_port(15, 34).
+has_out_port(16, 37).
+has_out_port(17, 39).
+has_out_port(18, 41).
+has_out_port(19, 43).
+
+% FACT: data(data_id, data_name, qualified_data_name).
+data(1, 'Menu.csv', '[Menu.csv]').
+data(2, 'Dish.csv', '[Dish.csv]').
+data(3, 'MenuItem.csv', '[MenuItem.csv]').
+data(4, 'MenuPage.csv', '[MenuPage.csv]').
+data(5, 'Menu.csv', 'NYPL_Detailed_Cleanup[Menu.csv]').
+data(6, 'menuCleaningOperationsSequence', 'NYPL_Detailed_Cleanup[menuCleaningOperationsSequence]').
+data(7, 'Menu-clean.csv', 'NYPL_Detailed_Cleanup[Menu-clean.csv]').
+data(8, 'Step1DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step1DataCleanMenu.csv]').
+data(9, 'Step2DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step2DataCleanMenu.csv]').
+data(10, 'Step3DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step3DataCleanMenu.csv]').
+data(11, 'Step4DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step4DataCleanMenu.csv]').
+data(12, 'Step5DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step5DataCleanMenu.csv]').
+data(13, 'Step6DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step6DataCleanMenu.csv]').
+data(14, 'Step7DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step7DataCleanMenu.csv]').
+data(15, 'Step8DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step8DataCleanMenu.csv]').
+data(16, 'Step9DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[Step9DataCleanMenu.csv]').
+data(17, 'DataCleanMenu.csv', 'NYPL_Detailed_Cleanup[DataCleanMenu.csv]').
+data(18, 'Dish.csv', 'NYPL_Detailed_Cleanup[Dish.csv]').
+data(19, 'dishCleaningOperationsSequence', 'NYPL_Detailed_Cleanup[dishCleaningOperationsSequence]').
+data(20, 'Dish-clean.csv', 'NYPL_Detailed_Cleanup[Dish-clean.csv]').
+data(21, 'Step1DataCleanDish.csv', 'NYPL_Detailed_Cleanup[Step1DataCleanDish.csv]').
+data(22, 'DataCleanDish.csv', 'NYPL_Detailed_Cleanup[DataCleanDish.csv]').
+data(23, 'MenuItem.csv', 'NYPL_Detailed_Cleanup[MenuItem.csv]').
+data(24, 'menuItemCleaningOperationsSequence', 'NYPL_Detailed_Cleanup[menuItemCleaningOperationsSequence]').
+data(25, 'Step1DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup[Step1DataCleanMenuItem.csv]').
+data(26, 'Step2DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup[Step2DataCleanMenuItem.csv]').
+data(27, 'Step3DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup[Step3DataCleanMenuItem.csv]').
+data(28, 'DataCleanMenuItem.csv', 'NYPL_Detailed_Cleanup[DataCleanMenuItem.csv]').
+
+% FACT: channel(channel_id, data_id).
+channel(1, 5).
+channel(2, 7).
+channel(3, 8).
+channel(4, 9).
+channel(5, 10).
+channel(6, 11).
+channel(7, 12).
+channel(8, 13).
+channel(9, 14).
+channel(10, 15).
+channel(11, 16).
+channel(12, 18).
+channel(13, 20).
+channel(14, 21).
+channel(15, 23).
+channel(16, 25).
+channel(17, 26).
+channel(18, 27).
+channel(19, 1).
+channel(20, 2).
+channel(21, 3).
+
+% FACT: port_connects_to_channel(port_id, channel_id).
+port_connects_to_channel(5, 1).
+port_connects_to_channel(7, 2).
+port_connects_to_channel(8, 2).
+port_connects_to_channel(9, 3).
+port_connects_to_channel(10, 3).
+port_connects_to_channel(11, 4).
+port_connects_to_channel(12, 4).
+port_connects_to_channel(13, 5).
+port_connects_to_channel(14, 5).
+port_connects_to_channel(15, 6).
+port_connects_to_channel(16, 6).
+port_connects_to_channel(17, 7).
+port_connects_to_channel(18, 7).
+port_connects_to_channel(19, 8).
+port_connects_to_channel(20, 8).
+port_connects_to_channel(21, 9).
+port_connects_to_channel(22, 9).
+port_connects_to_channel(23, 10).
+port_connects_to_channel(24, 10).
+port_connects_to_channel(25, 11).
+port_connects_to_channel(26, 11).
+port_connects_to_channel(28, 12).
+port_connects_to_channel(30, 13).
+port_connects_to_channel(31, 13).
+port_connects_to_channel(32, 14).
+port_connects_to_channel(33, 14).
+port_connects_to_channel(35, 15).
+port_connects_to_channel(37, 16).
+port_connects_to_channel(38, 16).
+port_connects_to_channel(39, 17).
+port_connects_to_channel(40, 17).
+port_connects_to_channel(41, 18).
+port_connects_to_channel(42, 18).
+port_connects_to_channel(5, 19).
+port_connects_to_channel(28, 20).
+port_connects_to_channel(35, 21).
+
+% FACT: inflow_connects_to_channel(port_id, channel_id).
+inflow_connects_to_channel(1, 1).
+inflow_connects_to_channel(2, 12).
+inflow_connects_to_channel(3, 15).
+inflow_connects_to_channel(1, 19).
+inflow_connects_to_channel(2, 20).
+inflow_connects_to_channel(3, 21).
+
+% FACT: outflow_connects_to_channel(port_id, channel_id).
+
+% FACT: uri_variable(uri_variable_id, variable_name, port_id).
+
+% FACT: log_template(log_template_id, port_id, entry_template, log_annotation_id).
+
+% FACT: log_template_variable(log_variable_id, variable_name, log_template_id).
+
+% FACT: extract_source(source_id, source_path).
+extract_source(1, '').
+
+% FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
+annotation(1, 1, 1, 'begin', '@begin', 'NYPL_Detailed_Cleanup').
+annotation(2, 1, 1, 'desc', '@desc', 'Detailed Workflow for cleaning NYPL Menus DataSet using OpenRefine and Python.').
+annotation(3, 1, 2, 'in', '@in', 'Menu.csv').
+annotation(4, 1, 2, 'uri', '@uri', 'file://rawdata/Menu.csv').
+annotation(5, 1, 3, 'in', '@in', 'Dish.csv').
+annotation(6, 1, 3, 'uri', '@uri', 'file://rawdata/Dish.csv').
+annotation(7, 1, 4, 'in', '@in', 'MenuItem.csv').
+annotation(8, 1, 4, 'uri', '@uri', 'file://rawdata/MenuItem.csv').
+annotation(9, 1, 5, 'in', '@in', 'MenuPage.csv').
+annotation(10, 1, 5, 'uri', '@uri', 'file://rawdata/MenuPage.csv').
+annotation(11, 1, 7, 'begin', '@begin', 'PythonMenuDataCleanup').
+annotation(12, 1, 7, 'desc', '@desc', 'Use Python script to clean Menu.csv').
+annotation(13, 1, 8, 'in', '@in', 'Menu.csv').
+annotation(14, 1, 8, 'uri', '@uri', 'file://rawdata/Menu.csv').
+annotation(15, 1, 9, 'param', '@param', 'menuCleaningOperationsSequence').
+annotation(16, 1, 10, 'out', '@out', 'Menu-clean.csv').
+annotation(17, 1, 10, 'uri', '@uri', 'file://Clean_Data/Menu-clean.csv').
+annotation(18, 1, 11, 'end', '@end', 'PythonMenuDataCleanup').
+annotation(19, 1, 13, 'begin', '@begin', 'Step1OpenRefineMenuDataCleanup').
+annotation(20, 1, 13, 'desc', '@desc', 'Convert Date Field to Date').
+annotation(21, 1, 14, 'in', '@in', 'Menu-clean.csv').
+annotation(22, 1, 14, 'uri', '@uri', 'file://Clean_Data/Menu-clean.csv').
+annotation(23, 1, 15, 'out', '@out', 'Step1DataCleanMenu.csv').
+annotation(24, 1, 15, 'uri', '@uri', 'file://OpenRefine/Step1DataCleanMenu.csv').
+annotation(25, 1, 16, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(26, 1, 18, 'begin', '@begin', 'Step2OpenRefineMenuDataCleanup').
+annotation(27, 1, 18, 'desc', '@desc', 'Analyze Date field outliers and based on that remove outliers').
+annotation(28, 1, 19, 'in', '@in', 'Step1DataCleanMenu.csv').
+annotation(29, 1, 19, 'uri', '@uri', 'file://Clean_Data/Step1DataCleanMenu.csv').
+annotation(30, 1, 20, 'out', '@out', 'Step2DataCleanMenu.csv').
+annotation(31, 1, 20, 'uri', '@uri', 'file://OpenRefine/Step2DataCleanMenu.csv').
+annotation(32, 1, 21, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(33, 1, 23, 'begin', '@begin', 'Step3OpenRefineMenuDataCleanup').
+annotation(34, 1, 23, 'desc', '@desc', 'Use Clustering from open refine on column Sponsor').
+annotation(35, 1, 24, 'in', '@in', 'Step2DataCleanMenu.csv').
+annotation(36, 1, 24, 'uri', '@uri', 'file://Clean_Data/Step2DataCleanMenu.csv').
+annotation(37, 1, 25, 'out', '@out', 'Step3DataCleanMenu.csv').
+annotation(38, 1, 25, 'uri', '@uri', 'file://OpenRefine/Step3DataCleanMenu.csv').
+annotation(39, 1, 26, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(40, 1, 28, 'begin', '@begin', 'Step4OpenRefineMenuDataCleanup').
+annotation(41, 1, 28, 'desc', '@desc', 'Use Clustering from open refine on column Event').
+annotation(42, 1, 29, 'in', '@in', 'Step3DataCleanMenu.csv').
+annotation(43, 1, 29, 'uri', '@uri', 'file://Clean_Data/Step3DataCleanMenu.csv').
+annotation(44, 1, 30, 'out', '@out', 'Step4DataCleanMenu.csv').
+annotation(45, 1, 30, 'uri', '@uri', 'file://OpenRefine/Step4DataCleanMenu.csv').
+annotation(46, 1, 31, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(47, 1, 33, 'begin', '@begin', 'Step5penRefineMenuDataCleanup').
+annotation(48, 1, 33, 'desc', '@desc', 'Use Clustering from open refine on column Place').
+annotation(49, 1, 34, 'in', '@in', 'Step4DataCleanMenu.csv').
+annotation(50, 1, 34, 'uri', '@uri', 'file://Step4DataCleanMenu.csv').
+annotation(51, 1, 35, 'out', '@out', 'Step5DataCleanMenu.csv').
+annotation(52, 1, 35, 'uri', '@uri', 'file://OpenRefine/Step5DataCleanMenu.csv').
+annotation(53, 1, 36, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(54, 1, 38, 'begin', '@begin', 'Step6OpenRefineMenuDataCleanup').
+annotation(55, 1, 38, 'desc', '@desc', 'Use Clustering from open refine on column Venue').
+annotation(56, 1, 39, 'in', '@in', 'Step5DataCleanMenu.csv').
+annotation(57, 1, 39, 'uri', '@uri', 'file://Clean_Data/Step5DataCleanMenu.csv').
+annotation(58, 1, 40, 'out', '@out', 'Step6DataCleanMenu.csv').
+annotation(59, 1, 40, 'uri', '@uri', 'file://OpenRefine/DataCleanMenu.csv').
+annotation(60, 1, 41, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(61, 1, 43, 'begin', '@begin', 'Step7OpenRefineMenuDataCleanup').
+annotation(62, 1, 43, 'desc', '@desc', 'Use Clustering from open refine on column Occasion').
+annotation(63, 1, 44, 'in', '@in', 'Step6DataCleanMenu.csv').
+annotation(64, 1, 44, 'uri', '@uri', 'file://Clean_Data/Step6DataCleanMenu.csv').
+annotation(65, 1, 45, 'out', '@out', 'Step7DataCleanMenu.csv').
+annotation(66, 1, 45, 'uri', '@uri', 'file://OpenRefine/Step7DataCleanMenu.csv').
+annotation(67, 1, 46, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(68, 1, 48, 'begin', '@begin', 'Step8OpenRefineMenuDataCleanup').
+annotation(69, 1, 48, 'desc', '@desc', 'Use Clustering from open refine on column Location').
+annotation(70, 1, 49, 'in', '@in', 'Step7DataCleanMenu.csv').
+annotation(71, 1, 49, 'uri', '@uri', 'file://Clean_Data/Step7DataCleanMenu.csv').
+annotation(72, 1, 50, 'out', '@out', 'Step8DataCleanMenu.csv').
+annotation(73, 1, 50, 'uri', '@uri', 'file://OpenRefine/Step8DataCleanMenu.csv').
+annotation(74, 1, 51, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(75, 1, 53, 'begin', '@begin', 'Step9OpenRefineMenuDataCleanup').
+annotation(76, 1, 53, 'desc', '@desc', 'Use Clustering from open refine on column Name').
+annotation(77, 1, 54, 'in', '@in', 'Step8DataCleanMenu.csv').
+annotation(78, 1, 54, 'uri', '@uri', 'file://Clean_Data/Step8DataCleanMenu.csv').
+annotation(79, 1, 55, 'out', '@out', 'Step9DataCleanMenu.csv').
+annotation(80, 1, 55, 'uri', '@uri', 'file://OpenRefine/Step9DataCleanMenu.csv').
+annotation(81, 1, 56, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(82, 1, 58, 'begin', '@begin', 'Step10OpenRefineMenuDataCleanup').
+annotation(83, 1, 58, 'desc', '@desc', 'Split the physical_description column into 7 columns').
+annotation(84, 1, 59, 'in', '@in', 'Step9DataCleanMenu.csv').
+annotation(85, 1, 59, 'uri', '@uri', 'file://Clean_Data/Step9DataCleanMenu.csv').
+annotation(86, 1, 60, 'out', '@out', 'DataCleanMenu.csv').
+annotation(87, 1, 60, 'uri', '@uri', 'file://OpenRefine/DataCleanMenu.csv').
+annotation(88, 1, 61, 'end', '@end', 'OpenRefineMenuDataCleanup').
+annotation(89, 1, 63, 'begin', '@begin', 'PythonDishDataCleanup').
+annotation(90, 1, 63, 'desc', '@desc', 'Use Python script to clean Dish.csv').
+annotation(91, 1, 64, 'in', '@in', 'Dish.csv').
+annotation(92, 1, 64, 'uri', '@uri', 'file://rawdata/Dish.csv').
+annotation(93, 1, 65, 'param', '@param', 'dishCleaningOperationsSequence').
+annotation(94, 1, 66, 'out', '@out', 'Dish-clean.csv').
+annotation(95, 1, 66, 'uri', '@uri', 'file://Clean_Data/Dish-clean.csv').
+annotation(96, 1, 67, 'end', '@end', 'PythonDishDataCleanup').
+annotation(97, 1, 69, 'begin', '@begin', 'Step1OpenRefineDishDataCleanup').
+annotation(98, 1, 69, 'desc', '@desc', 'Transform data to remove unwanted characters').
+annotation(99, 1, 70, 'in', '@in', 'Dish-clean.csv').
+annotation(100, 1, 70, 'uri', '@uri', 'file://Clean_Data/Dish-clean.csv').
+annotation(101, 1, 71, 'out', '@out', 'Step1DataCleanDish.csv').
+annotation(102, 1, 71, 'uri', '@uri', 'file://OpenRefine/Step1DataCleanDish.csv').
+annotation(103, 1, 72, 'end', '@end', 'Step1OpenRefineDishDataCleanup').
+annotation(104, 1, 74, 'begin', '@begin', 'Step2OpenRefineDishDataCleanup').
+annotation(105, 1, 74, 'desc', '@desc', 'Use Clustering from open refine on column Name').
+annotation(106, 1, 75, 'in', '@in', 'Step1DataCleanDish.csv').
+annotation(107, 1, 75, 'uri', '@uri', 'file://Clean_Data/Step1DataCleanDish.csv').
+annotation(108, 1, 76, 'out', '@out', 'DataCleanDish.csv').
+annotation(109, 1, 76, 'uri', '@uri', 'file://OpenRefine/DataCleanDish.csv').
+annotation(110, 1, 77, 'end', '@end', 'Step1OpenRefineDishDataCleanup').
+annotation(111, 1, 79, 'begin', '@begin', 'Step1OpenRefineMenuItemDataCleanup').
+annotation(112, 1, 79, 'desc', '@desc', 'Transform created_at field to date by creating a new filed created_date').
+annotation(113, 1, 80, 'in', '@in', 'MenuItem.csv').
+annotation(114, 1, 80, 'uri', '@uri', 'file:///MenuItem.csv').
+annotation(115, 1, 81, 'param', '@param', 'menuItemCleaningOperationsSequence').
+annotation(116, 1, 82, 'out', '@out', 'Step1DataCleanMenuItem.csv').
+annotation(117, 1, 82, 'uri', '@uri', 'file://OpenRefine/Step1DataCleanMenuItem.csv').
+annotation(118, 1, 83, 'end', '@end', 'Step1OpenRefineMenuItemDataCleanup').
+annotation(119, 1, 85, 'begin', '@begin', 'Step2OpenRefineMenuItemDataCleanup').
+annotation(120, 1, 85, 'desc', '@desc', 'Transform updated_at field to date by creating a new filed updated_date.').
+annotation(121, 1, 86, 'in', '@in', 'Step1DataCleanMenuItem.csv').
+annotation(122, 1, 86, 'uri', '@uri', 'file:///Step1DataCleanMenuItem.csv').
+annotation(123, 1, 87, 'out', '@out', 'Step2DataCleanMenuItem.csv').
+annotation(124, 1, 87, 'uri', '@uri', 'file://OpenRefine/Step2DataCleanMenuItem.csv').
+annotation(125, 1, 88, 'end', '@end', 'Step2OpenRefineMenuItemDataCleanup').
+annotation(126, 1, 90, 'begin', '@begin', 'Step3OpenRefineMenuItemDataCleanup').
+annotation(127, 1, 90, 'desc', '@desc', 'Transform xpos field to number').
+annotation(128, 1, 91, 'in', '@in', 'Step2DataCleanMenuItem.csv').
+annotation(129, 1, 91, 'uri', '@uri', 'file:///Step2DataCleanMenuItem.csv').
+annotation(130, 1, 92, 'out', '@out', 'Step3DataCleanMenuItem.csv').
+annotation(131, 1, 92, 'uri', '@uri', 'file://OpenRefine/Step3DataCleanMenuItem.csv').
+annotation(132, 1, 93, 'end', '@end', 'Step3OpenRefineMenuItemDataCleanup').
+annotation(133, 1, 95, 'begin', '@begin', 'Step4OpenRefineMenuItemDataCleanup').
+annotation(134, 1, 95, 'desc', '@desc', 'Transform ypos field to number').
+annotation(135, 1, 96, 'in', '@in', 'Step3DataCleanMenuItem.csv').
+annotation(136, 1, 96, 'uri', '@uri', 'file:///Step3DataCleanMenuItem.csv').
+annotation(137, 1, 97, 'out', '@out', 'DataCleanMenuItem.csv').
+annotation(138, 1, 97, 'uri', '@uri', 'file://OpenRefine/DataCleanMenuItem.csv').
+annotation(139, 1, 98, 'end', '@end', 'Step4OpenRefineMenuItemDataCleanup').
+annotation(140, 1, 100, 'end', '@end', 'NYPL_Detailed_Cleanup').
+
+% FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
+annotation_qualifies(2, 1).
+annotation_qualifies(4, 3).
+annotation_qualifies(6, 5).
+annotation_qualifies(8, 7).
+annotation_qualifies(10, 9).
+annotation_qualifies(12, 11).
+annotation_qualifies(14, 13).
+annotation_qualifies(17, 16).
+annotation_qualifies(20, 19).
+annotation_qualifies(22, 21).
+annotation_qualifies(24, 23).
+annotation_qualifies(27, 26).
+annotation_qualifies(29, 28).
+annotation_qualifies(31, 30).
+annotation_qualifies(34, 33).
+annotation_qualifies(36, 35).
+annotation_qualifies(38, 37).
+annotation_qualifies(41, 40).
+annotation_qualifies(43, 42).
+annotation_qualifies(45, 44).
+annotation_qualifies(48, 47).
+annotation_qualifies(50, 49).
+annotation_qualifies(52, 51).
+annotation_qualifies(55, 54).
+annotation_qualifies(57, 56).
+annotation_qualifies(59, 58).
+annotation_qualifies(62, 61).
+annotation_qualifies(64, 63).
+annotation_qualifies(66, 65).
+annotation_qualifies(69, 68).
+annotation_qualifies(71, 70).
+annotation_qualifies(73, 72).
+annotation_qualifies(76, 75).
+annotation_qualifies(78, 77).
+annotation_qualifies(80, 79).
+annotation_qualifies(83, 82).
+annotation_qualifies(85, 84).
+annotation_qualifies(87, 86).
+annotation_qualifies(90, 89).
+annotation_qualifies(92, 91).
+annotation_qualifies(95, 94).
+annotation_qualifies(98, 97).
+annotation_qualifies(100, 99).
+annotation_qualifies(102, 101).
+annotation_qualifies(105, 104).
+annotation_qualifies(107, 106).
+annotation_qualifies(109, 108).
+annotation_qualifies(112, 111).
+annotation_qualifies(114, 113).
+annotation_qualifies(117, 116).
+annotation_qualifies(120, 119).
+annotation_qualifies(122, 121).
+annotation_qualifies(124, 123).
+annotation_qualifies(127, 126).
+annotation_qualifies(129, 128).
+annotation_qualifies(131, 130).
+annotation_qualifies(134, 133).
+annotation_qualifies(136, 135).
+annotation_qualifies(138, 137).

@@ -1,0 +1,142 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=NYPL_SQLWorkflow
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+CreateDBModel [shape=record rankdir=LR label="{<f0> CreateDBModel |<f1> Analyze all the files and identify the relationships between all the four tables and Create a schema NYPL.}"];
+SQLOperationDishDataAnalysis [shape=record rankdir=LR label="{<f0> SQLOperationDishDataAnalysis |<f1> Analyze the cleansed Dish Data file for SQL Operations}"];
+SQLOperationsMenuDataAnalysis [shape=record rankdir=LR label="{<f0> SQLOperationsMenuDataAnalysis |<f1> Analyze the cleansed Menu Data file for SQL Operations}"];
+SQLOperationsOnMenuItemDataAnalysis [shape=record rankdir=LR label="{<f0> SQLOperationsOnMenuItemDataAnalysis |<f1> Analyze the cleansed MenuItem Data file for SQL Operations}"];
+SQLOperationsOnMenuPageDataAnalysis [shape=record rankdir=LR label="{<f0> SQLOperationsOnMenuPageDataAnalysis |<f1> Analyze the MenuPage Data file for SQL Operations}"];
+CreateDishTable [shape=record rankdir=LR label="{<f0> CreateDishTable |<f1> Create Dish table with Primary,Foreign Key and Not Null constraints.}"];
+CreateMenuTable [shape=record rankdir=LR label="{<f0> CreateMenuTable |<f1> Create Menu table with Primary,Foreign Key and Not Null constraints.}"];
+CreateMenuItemTable [shape=record rankdir=LR label="{<f0> CreateMenuItemTable |<f1> Create MenuItem table with Primary Key and Not Null constraints.}"];
+CreateMenuPageTable [shape=record rankdir=LR label="{<f0> CreateMenuPageTable |<f1> Create MenuPage table with Primary,Foreign Key and Not Null constraints.}"];
+ImportDatainDishTable [shape=record rankdir=LR label="{<f0> ImportDatainDishTable |<f1> Import data in the Dish table.}"];
+ImportDatainMenuTable [shape=record rankdir=LR label="{<f0> ImportDatainMenuTable |<f1> Import data in the Menu table.}"];
+ImportDatainMenuItemTable [shape=record rankdir=LR label="{<f0> ImportDatainMenuItemTable |<f1> Import data in the MenuItem table.}"];
+ImportDatainMenuPageTable [shape=record rankdir=LR label="{<f0> ImportDatainMenuPageTable |<f1> Import data in the MenuPage table.}"];
+IntegrityConstraintsCheck [shape=record rankdir=LR label="{<f0> IntegrityConstraintsCheck |<f1> Apply logical inegrity constraints on the data in the tables}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+"MenuPage.csv" [shape=record rankdir=LR label="{<f0> MenuPage.csv |<f1> file\://rawdata/MenuPage.csv}"];
+"DataCleanMenuItem.csv" [shape=record rankdir=LR label="{<f0> DataCleanMenuItem.csv |<f1> file\://OpenRefine/DataCleanMenuItem.csv}"];
+"DataCleanDish.csv" [shape=record rankdir=LR label="{<f0> DataCleanDish.csv |<f1> file\://OpenRefine/DataCleanDish.csv}"];
+"DataCleanMenu.csv" [shape=record rankdir=LR label="{<f0> DataCleanMenu.csv |<f1> file\://OpenRefine/DataCleanMenu.csv}"];
+DishTableSQLScript
+MenuTableSQLScript
+MenuItemTableSQLScript
+MenuPageTableSQLScript
+EmptyDishtable [shape=record rankdir=LR label="{<f0> EmptyDishtable |<f1> sqlite\://nypl.db/EmptyDishtable}"];
+EmptyMenutable [shape=record rankdir=LR label="{<f0> EmptyMenutable |<f1> sqlite\://nypl.db/EmptyMenutable}"];
+EmptyMenuItemtable [shape=record rankdir=LR label="{<f0> EmptyMenuItemtable |<f1> sqlite\://nypl.db/EmptyMenuItemtable}"];
+EmptyMenuPagetable [shape=record rankdir=LR label="{<f0> EmptyMenuPagetable |<f1> sqlite\://nypl.db/EmptyMenuPagetable}"];
+PopulatedMenuTable [shape=record rankdir=LR label="{<f0> PopulatedMenuTable |<f1> sqlite\://nypl.db/Menu}"];
+PopulatedDishTable [shape=record rankdir=LR label="{<f0> PopulatedDishTable |<f1> sqlite\://nypl.db/PopulatedDishTable}"];
+PopulatedMenuPageTable [shape=record rankdir=LR label="{<f0> PopulatedMenuPageTable |<f1> sqlite\://nypl.db/PopulatedMenuPageTable}"];
+PopulatedMenuItemTable [shape=record rankdir=LR label="{<f0> PopulatedMenuItemTable |<f1> sqlite\://nypl.db/PopulatedMenuItemTable}"];
+Menu [shape=record rankdir=LR label="{<f0> Menu |<f1> sqlite\://nypl.db/Menu}"];
+Dish [shape=record rankdir=LR label="{<f0> Dish |<f1> sqlite\://nypl.db/Dish}"];
+MenuItem [shape=record rankdir=LR label="{<f0> MenuItem |<f1> sqlite\://nypl.db/MenuItem}"];
+MenuPage [shape=record rankdir=LR label="{<f0> MenuPage |<f1> sqlite\://nypl.db/MenuPage}"];
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+"DBModel&NYPLSchema"
+
+/* Edges representing connections between programs and channels */
+CreateDBModel -> "DBModel&NYPLSchema"
+"MenuPage.csv" -> CreateDBModel
+"DataCleanMenuItem.csv" -> CreateDBModel
+"DataCleanDish.csv" -> CreateDBModel
+"DataCleanMenu.csv" -> CreateDBModel
+SQLOperationDishDataAnalysis -> DishTableSQLScript
+"DBModel&NYPLSchema" -> SQLOperationDishDataAnalysis
+SQLOperationsMenuDataAnalysis -> MenuTableSQLScript
+"DBModel&NYPLSchema" -> SQLOperationsMenuDataAnalysis
+SQLOperationsOnMenuItemDataAnalysis -> MenuItemTableSQLScript
+"DBModel&NYPLSchema" -> SQLOperationsOnMenuItemDataAnalysis
+SQLOperationsOnMenuPageDataAnalysis -> MenuPageTableSQLScript
+"DBModel&NYPLSchema" -> SQLOperationsOnMenuPageDataAnalysis
+CreateDishTable -> EmptyDishtable
+DishTableSQLScript -> CreateDishTable
+CreateMenuTable -> EmptyMenutable
+MenuTableSQLScript -> CreateMenuTable
+CreateMenuItemTable -> EmptyMenuItemtable
+MenuItemTableSQLScript -> CreateMenuItemTable
+CreateMenuPageTable -> EmptyMenuPagetable
+MenuPageTableSQLScript -> CreateMenuPageTable
+ImportDatainDishTable -> PopulatedDishTable
+EmptyDishtable -> ImportDatainDishTable
+"DataCleanDish.csv" -> ImportDatainDishTable
+ImportDatainMenuTable -> PopulatedMenuTable
+EmptyMenutable -> ImportDatainMenuTable
+"DataCleanMenu.csv" -> ImportDatainMenuTable
+ImportDatainMenuItemTable -> PopulatedMenuItemTable
+EmptyMenuItemtable -> ImportDatainMenuItemTable
+"DataCleanMenuItem.csv" -> ImportDatainMenuItemTable
+ImportDatainMenuPageTable -> PopulatedMenuPageTable
+EmptyMenuPagetable -> ImportDatainMenuPageTable
+"MenuPage.csv" -> ImportDatainMenuPageTable
+IntegrityConstraintsCheck -> Menu
+IntegrityConstraintsCheck -> Dish
+IntegrityConstraintsCheck -> MenuItem
+IntegrityConstraintsCheck -> MenuPage
+PopulatedMenuTable -> IntegrityConstraintsCheck
+PopulatedDishTable -> IntegrityConstraintsCheck
+PopulatedMenuPageTable -> IntegrityConstraintsCheck
+PopulatedMenuItemTable -> IntegrityConstraintsCheck
+IntegrityConstraintsScript -> IntegrityConstraintsCheck
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+"DataCleanDish.csv_input_port" [label=""]
+"DataCleanMenu.csv_input_port" [label=""]
+"DataCleanMenuItem.csv_input_port" [label=""]
+"MenuPage.csv_input_port" [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+Menu_output_port [label=""]
+Dish_output_port [label=""]
+MenuItem_output_port [label=""]
+MenuPage_output_port [label=""]
+
+/* Edges from input ports to channels */
+"DataCleanDish.csv_input_port" -> "DataCleanDish.csv"
+"DataCleanMenu.csv_input_port" -> "DataCleanMenu.csv"
+"DataCleanMenuItem.csv_input_port" -> "DataCleanMenuItem.csv"
+"MenuPage.csv_input_port" -> "MenuPage.csv"
+
+/* Edges from channels to output ports */
+Menu -> Menu_output_port
+Dish -> Dish_output_port
+MenuItem -> MenuItem_output_port
+MenuPage -> MenuPage_output_port
+
+/* End of top-level graph */
+}

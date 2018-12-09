@@ -1,0 +1,527 @@
+
+% FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
+program(1, 'NYPL_SQLWorkflow', 'NYPL_SQLWorkflow', 1, 127).
+program(2, 'CreateDBModel', 'NYPL_SQLWorkflow.CreateDBModel', 11, 22).
+program(3, 'SQLOperationDishDataAnalysis', 'NYPL_SQLWorkflow.SQLOperationDishDataAnalysis', 23, 27).
+program(4, 'SQLOperationsMenuDataAnalysis', 'NYPL_SQLWorkflow.SQLOperationsMenuDataAnalysis', 28, 32).
+program(5, 'SQLOperationsOnMenuItemDataAnalysis', 'NYPL_SQLWorkflow.SQLOperationsOnMenuItemDataAnalysis', 33, 37).
+program(6, 'SQLOperationsOnMenuPageDataAnalysis', 'NYPL_SQLWorkflow.SQLOperationsOnMenuPageDataAnalysis', 38, 42).
+program(7, 'CreateDishTable', 'NYPL_SQLWorkflow.CreateDishTable', 43, 48).
+program(8, 'CreateMenuTable', 'NYPL_SQLWorkflow.CreateMenuTable', 49, 54).
+program(9, 'CreateMenuItemTable', 'NYPL_SQLWorkflow.CreateMenuItemTable', 55, 60).
+program(10, 'CreateMenuPageTable', 'NYPL_SQLWorkflow.CreateMenuPageTable', 61, 66).
+program(11, 'ImportDatainDishTable', 'NYPL_SQLWorkflow.ImportDatainDishTable', 67, 74).
+program(12, 'ImportDatainMenuTable', 'NYPL_SQLWorkflow.ImportDatainMenuTable', 75, 82).
+program(13, 'ImportDatainMenuItemTable', 'NYPL_SQLWorkflow.ImportDatainMenuItemTable', 83, 90).
+program(14, 'ImportDatainMenuPageTable', 'NYPL_SQLWorkflow.ImportDatainMenuPageTable', 91, 98).
+program(15, 'IntegrityConstraintsCheck', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck', 99, 118).
+
+% FACT: workflow(program_id).
+workflow(1).
+
+% FACT: function(program_id).
+
+% FACT: has_subprogram(program_id, subprogram_id).
+has_subprogram(1, 2).
+has_subprogram(1, 3).
+has_subprogram(1, 4).
+has_subprogram(1, 5).
+has_subprogram(1, 6).
+has_subprogram(1, 7).
+has_subprogram(1, 8).
+has_subprogram(1, 9).
+has_subprogram(1, 10).
+has_subprogram(1, 11).
+has_subprogram(1, 12).
+has_subprogram(1, 13).
+has_subprogram(1, 14).
+has_subprogram(1, 15).
+
+% FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
+port(1, 'in', 'DataCleanDish.csv', 'NYPL_SQLWorkflow<-DataCleanDish.csv', 3, 1).
+port(2, 'in', 'DataCleanMenu.csv', 'NYPL_SQLWorkflow<-DataCleanMenu.csv', 5, 2).
+port(3, 'in', 'DataCleanMenuItem.csv', 'NYPL_SQLWorkflow<-DataCleanMenuItem.csv', 7, 3).
+port(4, 'in', 'MenuPage.csv', 'NYPL_SQLWorkflow<-MenuPage.csv', 9, 4).
+port(82, 'out', 'Menu', 'NYPL_SQLWorkflow->Menu', 119, 27).
+port(83, 'out', 'Dish', 'NYPL_SQLWorkflow->Dish', 121, 28).
+port(84, 'out', 'MenuItem', 'NYPL_SQLWorkflow->MenuItem', 123, 29).
+port(85, 'out', 'MenuPage', 'NYPL_SQLWorkflow->MenuPage', 125, 30).
+port(5, 'in', 'MenuPage.csv', 'NYPL_SQLWorkflow.CreateDBModel<-MenuPage.csv', 13, 5).
+port(6, 'in', 'DataCleanMenuItem.csv', 'NYPL_SQLWorkflow.CreateDBModel<-DataCleanMenuItem.csv', 15, 6).
+port(7, 'in', 'DataCleanDish.csv', 'NYPL_SQLWorkflow.CreateDBModel<-DataCleanDish.csv', 17, 7).
+port(8, 'in', 'DataCleanMenu.csv', 'NYPL_SQLWorkflow.CreateDBModel<-DataCleanMenu.csv', 19, 8).
+port(9, 'out', 'DBModel&NYPLSchema', 'NYPL_SQLWorkflow.CreateDBModel->DBModel&NYPLSchema', 21, 9).
+port(10, 'param', 'DBModel&NYPLSchema', 'NYPL_SQLWorkflow.SQLOperationDishDataAnalysis<-DBModel&NYPLSchema', 25, 9).
+port(11, 'out', 'DishTableSQLScript', 'NYPL_SQLWorkflow.SQLOperationDishDataAnalysis->DishTableSQLScript', 26, 10).
+port(13, 'param', 'DBModel&NYPLSchema', 'NYPL_SQLWorkflow.SQLOperationsMenuDataAnalysis<-DBModel&NYPLSchema', 31, 9).
+port(12, 'out', 'MenuTableSQLScript', 'NYPL_SQLWorkflow.SQLOperationsMenuDataAnalysis->MenuTableSQLScript', 30, 11).
+port(15, 'param', 'DBModel&NYPLSchema', 'NYPL_SQLWorkflow.SQLOperationsOnMenuItemDataAnalysis<-DBModel&NYPLSchema', 36, 9).
+port(14, 'out', 'MenuItemTableSQLScript', 'NYPL_SQLWorkflow.SQLOperationsOnMenuItemDataAnalysis->MenuItemTableSQLScript', 35, 12).
+port(51, 'param', 'DBModel&NYPLSchema', 'NYPL_SQLWorkflow.SQLOperationsOnMenuPageDataAnalysis<-DBModel&NYPLSchema', 40, 9).
+port(52, 'out', 'MenuPageTableSQLScript', 'NYPL_SQLWorkflow.SQLOperationsOnMenuPageDataAnalysis->MenuPageTableSQLScript', 41, 13).
+port(53, 'in', 'DishTableSQLScript', 'NYPL_SQLWorkflow.CreateDishTable<-DishTableSQLScript', 45, 10).
+port(54, 'out', 'EmptyDishtable', 'NYPL_SQLWorkflow.CreateDishTable->EmptyDishtable', 46, 14).
+port(55, 'in', 'MenuTableSQLScript', 'NYPL_SQLWorkflow.CreateMenuTable<-MenuTableSQLScript', 51, 11).
+port(56, 'out', 'EmptyMenutable', 'NYPL_SQLWorkflow.CreateMenuTable->EmptyMenutable', 52, 15).
+port(57, 'in', 'MenuItemTableSQLScript', 'NYPL_SQLWorkflow.CreateMenuItemTable<-MenuItemTableSQLScript', 57, 12).
+port(58, 'out', 'EmptyMenuItemtable', 'NYPL_SQLWorkflow.CreateMenuItemTable->EmptyMenuItemtable', 58, 16).
+port(59, 'in', 'MenuPageTableSQLScript', 'NYPL_SQLWorkflow.CreateMenuPageTable<-MenuPageTableSQLScript', 63, 13).
+port(60, 'out', 'EmptyMenuPagetable', 'NYPL_SQLWorkflow.CreateMenuPageTable->EmptyMenuPagetable', 64, 17).
+port(61, 'in', 'EmptyDishtable', 'NYPL_SQLWorkflow.ImportDatainDishTable<-EmptyDishtable', 69, 14).
+port(62, 'in', 'DataCleanDish.csv', 'NYPL_SQLWorkflow.ImportDatainDishTable<-DataCleanDish.csv', 70, 7).
+port(63, 'out', 'PopulatedDishTable', 'NYPL_SQLWorkflow.ImportDatainDishTable->PopulatedDishTable', 72, 18).
+port(64, 'in', 'EmptyMenutable', 'NYPL_SQLWorkflow.ImportDatainMenuTable<-EmptyMenutable', 77, 15).
+port(65, 'in', 'DataCleanMenu.csv', 'NYPL_SQLWorkflow.ImportDatainMenuTable<-DataCleanMenu.csv', 78, 8).
+port(66, 'out', 'PopulatedMenuTable', 'NYPL_SQLWorkflow.ImportDatainMenuTable->PopulatedMenuTable', 80, 19).
+port(67, 'in', 'EmptyMenuItemtable', 'NYPL_SQLWorkflow.ImportDatainMenuItemTable<-EmptyMenuItemtable', 85, 16).
+port(68, 'in', 'DataCleanMenuItem.csv', 'NYPL_SQLWorkflow.ImportDatainMenuItemTable<-DataCleanMenuItem.csv', 86, 6).
+port(69, 'out', 'PopulatedMenuItemTable', 'NYPL_SQLWorkflow.ImportDatainMenuItemTable->PopulatedMenuItemTable', 88, 20).
+port(70, 'in', 'EmptyMenuPagetable', 'NYPL_SQLWorkflow.ImportDatainMenuPageTable<-EmptyMenuPagetable', 93, 17).
+port(71, 'in', 'MenuPage.csv', 'NYPL_SQLWorkflow.ImportDatainMenuPageTable<-MenuPage.csv', 94, 5).
+port(72, 'out', 'PopulatedMenuPageTable', 'NYPL_SQLWorkflow.ImportDatainMenuPageTable->PopulatedMenuPageTable', 96, 21).
+port(73, 'in', 'PopulatedMenuTable', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck<-PopulatedMenuTable', 101, 19).
+port(74, 'in', 'PopulatedDishTable', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck<-PopulatedDishTable', 103, 18).
+port(75, 'in', 'PopulatedMenuPageTable', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck<-PopulatedMenuPageTable', 105, 21).
+port(76, 'in', 'PopulatedMenuItemTable', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck<-PopulatedMenuItemTable', 107, 20).
+port(77, 'param', 'IntegrityConstraintsScript', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck<-IntegrityConstraintsScript', 109, 22).
+port(78, 'out', 'Menu', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck->Menu', 110, 23).
+port(79, 'out', 'Dish', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck->Dish', 112, 24).
+port(80, 'out', 'MenuItem', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck->MenuItem', 114, 25).
+port(81, 'out', 'MenuPage', 'NYPL_SQLWorkflow.IntegrityConstraintsCheck->MenuPage', 116, 26).
+
+% FACT: port_alias(port_id, alias).
+
+% FACT: port_uri_template(port_id, uri).
+port_uri_template(1, 'file://OpenRefine/DataCleanDish.csv').
+port_uri_template(2, 'file://OpenRefine/DataCleanMenu.csv').
+port_uri_template(3, 'file://OpenRefine/DataCleanMenuItem.csv').
+port_uri_template(4, 'file://rawdata/MenuPage.csv').
+port_uri_template(82, 'sqlite://nypl.db/Menu').
+port_uri_template(83, 'sqlite://nypl.db/Dish').
+port_uri_template(84, 'sqlite://nypl.db/MenuItem').
+port_uri_template(85, 'sqlite://nypl.db/MenuPage').
+port_uri_template(5, 'file://rawdata/MenuPage.csv').
+port_uri_template(6, 'file://OpenRefine/DataCleanMenuItem.csv').
+port_uri_template(7, 'file://OpenRefine/DataCleanDish.csv').
+port_uri_template(8, 'file://OpenRefine/DataCleanMenu.csv').
+port_uri_template(54, 'sqlite://nypl.db/EmptyDishtable').
+port_uri_template(56, 'sqlite://nypl.db/EmptyMenutable').
+port_uri_template(58, 'sqlite://nypl.db/EmptyMenuItemtable').
+port_uri_template(60, 'sqlite://nypl.db/EmptyMenuPagetable').
+port_uri_template(62, 'file://OpenRefine/DataCleanDish.csv').
+port_uri_template(63, 'sqlite://nypl.db/PopulatedDishTable').
+port_uri_template(65, 'file://OpenRefine/DataCleanMenu.csv').
+port_uri_template(66, 'sqlite://nypl.db/Menu').
+port_uri_template(68, 'file://OpenRefine/DataCleanMenuItem.csv').
+port_uri_template(69, 'sqlite://nypl.db/PopulatedMenuItemTable').
+port_uri_template(71, 'file://rawdata/MenuPage.csv').
+port_uri_template(72, 'sqlite://nypl.db/PopulatedMenuPageTable').
+port_uri_template(73, 'sqlite://nypl.db/PopulatedMenuTable').
+port_uri_template(74, 'sqlite://nypl.db/PopulatedDishTable').
+port_uri_template(75, 'sqlite://nypl.db/MenuPage').
+port_uri_template(76, 'sqlite://nypl.db/MenuItem').
+port_uri_template(78, 'sqlite://nypl.db/Menu').
+port_uri_template(79, 'sqlite://nypl.db/Dish').
+port_uri_template(80, 'sqlite://nypl.db/MenuItem').
+port_uri_template(81, 'sqlite://nypl.db/MenuPage').
+
+% FACT: has_in_port(block_id, port_id).
+has_in_port(1, 1).
+has_in_port(1, 2).
+has_in_port(1, 3).
+has_in_port(1, 4).
+has_in_port(2, 5).
+has_in_port(2, 6).
+has_in_port(2, 7).
+has_in_port(2, 8).
+has_in_port(3, 10).
+has_in_port(4, 13).
+has_in_port(5, 15).
+has_in_port(6, 51).
+has_in_port(7, 53).
+has_in_port(8, 55).
+has_in_port(9, 57).
+has_in_port(10, 59).
+has_in_port(11, 61).
+has_in_port(11, 62).
+has_in_port(12, 64).
+has_in_port(12, 65).
+has_in_port(13, 67).
+has_in_port(13, 68).
+has_in_port(14, 70).
+has_in_port(14, 71).
+has_in_port(15, 73).
+has_in_port(15, 74).
+has_in_port(15, 75).
+has_in_port(15, 76).
+has_in_port(15, 77).
+
+% FACT: has_out_port(block_id, port_id).
+has_out_port(1, 82).
+has_out_port(1, 83).
+has_out_port(1, 84).
+has_out_port(1, 85).
+has_out_port(2, 9).
+has_out_port(3, 11).
+has_out_port(4, 12).
+has_out_port(5, 14).
+has_out_port(6, 52).
+has_out_port(7, 54).
+has_out_port(8, 56).
+has_out_port(9, 58).
+has_out_port(10, 60).
+has_out_port(11, 63).
+has_out_port(12, 66).
+has_out_port(13, 69).
+has_out_port(14, 72).
+has_out_port(15, 78).
+has_out_port(15, 79).
+has_out_port(15, 80).
+has_out_port(15, 81).
+
+% FACT: data(data_id, data_name, qualified_data_name).
+data(1, 'DataCleanDish.csv', '[DataCleanDish.csv]').
+data(2, 'DataCleanMenu.csv', '[DataCleanMenu.csv]').
+data(3, 'DataCleanMenuItem.csv', '[DataCleanMenuItem.csv]').
+data(4, 'MenuPage.csv', '[MenuPage.csv]').
+data(27, 'Menu', '[Menu]').
+data(28, 'Dish', '[Dish]').
+data(29, 'MenuItem', '[MenuItem]').
+data(30, 'MenuPage', '[MenuPage]').
+data(5, 'MenuPage.csv', 'NYPL_SQLWorkflow[MenuPage.csv]').
+data(6, 'DataCleanMenuItem.csv', 'NYPL_SQLWorkflow[DataCleanMenuItem.csv]').
+data(7, 'DataCleanDish.csv', 'NYPL_SQLWorkflow[DataCleanDish.csv]').
+data(8, 'DataCleanMenu.csv', 'NYPL_SQLWorkflow[DataCleanMenu.csv]').
+data(9, 'DBModel&NYPLSchema', 'NYPL_SQLWorkflow[DBModel&NYPLSchema]').
+data(10, 'DishTableSQLScript', 'NYPL_SQLWorkflow[DishTableSQLScript]').
+data(11, 'MenuTableSQLScript', 'NYPL_SQLWorkflow[MenuTableSQLScript]').
+data(12, 'MenuItemTableSQLScript', 'NYPL_SQLWorkflow[MenuItemTableSQLScript]').
+data(13, 'MenuPageTableSQLScript', 'NYPL_SQLWorkflow[MenuPageTableSQLScript]').
+data(14, 'EmptyDishtable', 'NYPL_SQLWorkflow[EmptyDishtable]').
+data(15, 'EmptyMenutable', 'NYPL_SQLWorkflow[EmptyMenutable]').
+data(16, 'EmptyMenuItemtable', 'NYPL_SQLWorkflow[EmptyMenuItemtable]').
+data(17, 'EmptyMenuPagetable', 'NYPL_SQLWorkflow[EmptyMenuPagetable]').
+data(18, 'PopulatedDishTable', 'NYPL_SQLWorkflow[PopulatedDishTable]').
+data(19, 'PopulatedMenuTable', 'NYPL_SQLWorkflow[PopulatedMenuTable]').
+data(20, 'PopulatedMenuItemTable', 'NYPL_SQLWorkflow[PopulatedMenuItemTable]').
+data(21, 'PopulatedMenuPageTable', 'NYPL_SQLWorkflow[PopulatedMenuPageTable]').
+data(22, 'IntegrityConstraintsScript', 'NYPL_SQLWorkflow[IntegrityConstraintsScript]').
+data(23, 'Menu', 'NYPL_SQLWorkflow[Menu]').
+data(24, 'Dish', 'NYPL_SQLWorkflow[Dish]').
+data(25, 'MenuItem', 'NYPL_SQLWorkflow[MenuItem]').
+data(26, 'MenuPage', 'NYPL_SQLWorkflow[MenuPage]').
+
+% FACT: channel(channel_id, data_id).
+channel(41, 5).
+channel(42, 5).
+channel(43, 6).
+channel(44, 6).
+channel(45, 7).
+channel(46, 7).
+channel(47, 8).
+channel(48, 8).
+channel(49, 9).
+channel(50, 9).
+channel(51, 9).
+channel(52, 9).
+channel(53, 10).
+channel(54, 11).
+channel(55, 12).
+channel(56, 13).
+channel(57, 14).
+channel(58, 15).
+channel(59, 16).
+channel(60, 17).
+channel(61, 19).
+channel(62, 18).
+channel(63, 21).
+channel(64, 20).
+channel(65, 27).
+channel(66, 28).
+channel(67, 29).
+channel(68, 30).
+channel(69, 1).
+channel(70, 1).
+channel(71, 2).
+channel(72, 2).
+channel(73, 3).
+channel(74, 3).
+channel(75, 4).
+channel(76, 4).
+channel(77, 23).
+channel(78, 24).
+channel(79, 25).
+channel(80, 26).
+
+% FACT: port_connects_to_channel(port_id, channel_id).
+port_connects_to_channel(5, 41).
+port_connects_to_channel(71, 42).
+port_connects_to_channel(6, 43).
+port_connects_to_channel(68, 44).
+port_connects_to_channel(7, 45).
+port_connects_to_channel(62, 46).
+port_connects_to_channel(8, 47).
+port_connects_to_channel(65, 48).
+port_connects_to_channel(9, 49).
+port_connects_to_channel(10, 49).
+port_connects_to_channel(9, 50).
+port_connects_to_channel(13, 50).
+port_connects_to_channel(9, 51).
+port_connects_to_channel(15, 51).
+port_connects_to_channel(9, 52).
+port_connects_to_channel(51, 52).
+port_connects_to_channel(11, 53).
+port_connects_to_channel(53, 53).
+port_connects_to_channel(12, 54).
+port_connects_to_channel(55, 54).
+port_connects_to_channel(14, 55).
+port_connects_to_channel(57, 55).
+port_connects_to_channel(52, 56).
+port_connects_to_channel(59, 56).
+port_connects_to_channel(54, 57).
+port_connects_to_channel(61, 57).
+port_connects_to_channel(56, 58).
+port_connects_to_channel(64, 58).
+port_connects_to_channel(58, 59).
+port_connects_to_channel(67, 59).
+port_connects_to_channel(60, 60).
+port_connects_to_channel(70, 60).
+port_connects_to_channel(66, 61).
+port_connects_to_channel(73, 61).
+port_connects_to_channel(63, 62).
+port_connects_to_channel(74, 62).
+port_connects_to_channel(72, 63).
+port_connects_to_channel(75, 63).
+port_connects_to_channel(69, 64).
+port_connects_to_channel(76, 64).
+port_connects_to_channel(78, 65).
+port_connects_to_channel(79, 66).
+port_connects_to_channel(80, 67).
+port_connects_to_channel(81, 68).
+port_connects_to_channel(7, 69).
+port_connects_to_channel(62, 70).
+port_connects_to_channel(8, 71).
+port_connects_to_channel(65, 72).
+port_connects_to_channel(6, 73).
+port_connects_to_channel(68, 74).
+port_connects_to_channel(5, 75).
+port_connects_to_channel(71, 76).
+port_connects_to_channel(78, 77).
+port_connects_to_channel(79, 78).
+port_connects_to_channel(80, 79).
+port_connects_to_channel(81, 80).
+
+% FACT: inflow_connects_to_channel(port_id, channel_id).
+inflow_connects_to_channel(4, 41).
+inflow_connects_to_channel(4, 42).
+inflow_connects_to_channel(3, 43).
+inflow_connects_to_channel(3, 44).
+inflow_connects_to_channel(1, 45).
+inflow_connects_to_channel(1, 46).
+inflow_connects_to_channel(2, 47).
+inflow_connects_to_channel(2, 48).
+inflow_connects_to_channel(1, 69).
+inflow_connects_to_channel(1, 70).
+inflow_connects_to_channel(2, 71).
+inflow_connects_to_channel(2, 72).
+inflow_connects_to_channel(3, 73).
+inflow_connects_to_channel(3, 74).
+inflow_connects_to_channel(4, 75).
+inflow_connects_to_channel(4, 76).
+
+% FACT: outflow_connects_to_channel(port_id, channel_id).
+outflow_connects_to_channel(82, 65).
+outflow_connects_to_channel(83, 66).
+outflow_connects_to_channel(84, 67).
+outflow_connects_to_channel(85, 68).
+outflow_connects_to_channel(82, 77).
+outflow_connects_to_channel(83, 78).
+outflow_connects_to_channel(84, 79).
+outflow_connects_to_channel(85, 80).
+
+% FACT: uri_variable(uri_variable_id, variable_name, port_id).
+
+% FACT: log_template(log_template_id, port_id, entry_template, log_annotation_id).
+
+% FACT: log_template_variable(log_variable_id, variable_name, log_template_id).
+
+% FACT: extract_source(source_id, source_path).
+extract_source(1, '').
+
+% FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
+annotation(1, 1, 1, 'begin', '@begin', 'NYPL_SQLWorkflow').
+annotation(2, 1, 1, 'desc', '@desc', 'Workflow for all the database operations performed on the cleansed files.').
+annotation(3, 1, 2, 'in', '@in', 'DataCleanDish.csv').
+annotation(4, 1, 2, 'uri', '@uri', 'file://OpenRefine/DataCleanDish.csv').
+annotation(5, 1, 3, 'in', '@in', 'DataCleanMenu.csv').
+annotation(6, 1, 3, 'uri', '@uri', 'file://OpenRefine/DataCleanMenu.csv').
+annotation(7, 1, 4, 'in', '@in', 'DataCleanMenuItem.csv').
+annotation(8, 1, 4, 'uri', '@uri', 'file://OpenRefine/DataCleanMenuItem.csv').
+annotation(9, 1, 5, 'in', '@in', 'MenuPage.csv').
+annotation(10, 1, 5, 'uri', '@uri', 'file://rawdata/MenuPage.csv').
+annotation(11, 1, 8, 'begin', '@begin', 'CreateDBModel').
+annotation(12, 1, 8, 'desc', '@desc', 'Analyze all the files and identify the relationships between all the four tables and Create a schema NYPL.').
+annotation(13, 1, 9, 'in', '@in', 'MenuPage.csv').
+annotation(14, 1, 9, 'uri', '@uri', 'file://rawdata/MenuPage.csv').
+annotation(15, 1, 10, 'in', '@in', 'DataCleanMenuItem.csv').
+annotation(16, 1, 10, 'uri', '@uri', 'file://OpenRefine/DataCleanMenuItem.csv').
+annotation(17, 1, 11, 'in', '@in', 'DataCleanDish.csv').
+annotation(18, 1, 11, 'uri', '@uri', 'file://OpenRefine/DataCleanDish.csv').
+annotation(19, 1, 12, 'in', '@in', 'DataCleanMenu.csv').
+annotation(20, 1, 12, 'uri', '@uri', 'file://OpenRefine/DataCleanMenu.csv').
+annotation(21, 1, 13, 'out', '@out', 'DBModel&NYPLSchema').
+annotation(22, 1, 14, 'end', '@end', 'CreateDBModel').
+annotation(23, 1, 16, 'begin', '@begin', 'SQLOperationDishDataAnalysis').
+annotation(24, 1, 16, 'desc', '@desc', 'Analyze the cleansed Dish Data file for SQL Operations').
+annotation(25, 1, 17, 'param', '@param', 'DBModel&NYPLSchema').
+annotation(26, 1, 18, 'out', '@out', 'DishTableSQLScript').
+annotation(27, 1, 19, 'end', '@end', 'SQLOperationsOnDish').
+annotation(28, 1, 21, 'begin', '@begin', 'SQLOperationsMenuDataAnalysis').
+annotation(29, 1, 21, 'desc', '@desc', 'Analyze the cleansed Menu Data file for SQL Operations').
+annotation(30, 1, 22, 'out', '@out', 'MenuTableSQLScript').
+annotation(31, 1, 23, 'param', '@param', 'DBModel&NYPLSchema').
+annotation(32, 1, 24, 'end', '@end', 'SQLOperationsMenuDataAnalysis').
+annotation(33, 1, 26, 'begin', '@begin', 'SQLOperationsOnMenuItemDataAnalysis').
+annotation(34, 1, 26, 'desc', '@desc', 'Analyze the cleansed MenuItem Data file for SQL Operations').
+annotation(35, 1, 27, 'out', '@out', 'MenuItemTableSQLScript').
+annotation(36, 1, 28, 'param', '@param', 'DBModel&NYPLSchema').
+annotation(37, 1, 29, 'end', '@end', 'SQLOperationsOnMenuItemDataAnalysis').
+annotation(38, 1, 31, 'begin', '@begin', 'SQLOperationsOnMenuPageDataAnalysis').
+annotation(39, 1, 31, 'desc', '@desc', 'Analyze the MenuPage Data file for SQL Operations').
+annotation(40, 1, 32, 'param', '@param', 'DBModel&NYPLSchema').
+annotation(41, 1, 33, 'out', '@out', 'MenuPageTableSQLScript').
+annotation(42, 1, 34, 'end', '@end', 'SQLOperationsOnMenuPageDataAnalysis').
+annotation(43, 1, 36, 'begin', '@begin', 'CreateDishTable').
+annotation(44, 1, 36, 'desc', '@desc', 'Create Dish table with Primary,Foreign Key and Not Null constraints.').
+annotation(45, 1, 37, 'in', '@in', 'DishTableSQLScript').
+annotation(46, 1, 38, 'out', '@out', 'EmptyDishtable').
+annotation(47, 1, 38, 'uri', '@uri', 'sqlite://nypl.db/EmptyDishtable').
+annotation(48, 1, 39, 'end', '@end', 'CreateDishTable').
+annotation(49, 1, 41, 'begin', '@begin', 'CreateMenuTable').
+annotation(50, 1, 41, 'desc', '@desc', 'Create Menu table with Primary,Foreign Key and Not Null constraints.').
+annotation(51, 1, 42, 'in', '@in', 'MenuTableSQLScript').
+annotation(52, 1, 43, 'out', '@out', 'EmptyMenutable').
+annotation(53, 1, 43, 'uri', '@uri', 'sqlite://nypl.db/EmptyMenutable').
+annotation(54, 1, 44, 'end', '@end', 'CreateMenuTable').
+annotation(55, 1, 46, 'begin', '@begin', 'CreateMenuItemTable').
+annotation(56, 1, 46, 'desc', '@desc', 'Create MenuItem table with Primary Key and Not Null constraints.').
+annotation(57, 1, 47, 'in', '@in', 'MenuItemTableSQLScript').
+annotation(58, 1, 48, 'out', '@out', 'EmptyMenuItemtable').
+annotation(59, 1, 48, 'uri', '@uri', 'sqlite://nypl.db/EmptyMenuItemtable').
+annotation(60, 1, 49, 'end', '@end', 'CreateMenuItemTable').
+annotation(61, 1, 51, 'begin', '@begin', 'CreateMenuPageTable').
+annotation(62, 1, 51, 'desc', '@desc', 'Create MenuPage table with Primary,Foreign Key and Not Null constraints.').
+annotation(63, 1, 52, 'in', '@in', 'MenuPageTableSQLScript').
+annotation(64, 1, 53, 'out', '@out', 'EmptyMenuPagetable').
+annotation(65, 1, 53, 'uri', '@uri', 'sqlite://nypl.db/EmptyMenuPagetable').
+annotation(66, 1, 54, 'end', '@end', 'CreateMenuPageTable').
+annotation(67, 1, 56, 'begin', '@begin', 'ImportDatainDishTable').
+annotation(68, 1, 56, 'desc', '@desc', 'Import data in the Dish table.').
+annotation(69, 1, 57, 'in', '@in', 'EmptyDishtable').
+annotation(70, 1, 58, 'in', '@in', 'DataCleanDish.csv').
+annotation(71, 1, 58, 'uri', '@uri', 'file://OpenRefine/DataCleanDish.csv').
+annotation(72, 1, 59, 'out', '@out', 'PopulatedDishTable').
+annotation(73, 1, 59, 'uri', '@uri', 'sqlite://nypl.db/PopulatedDishTable').
+annotation(74, 1, 60, 'end', '@end', 'ImportDatainDishTable').
+annotation(75, 1, 62, 'begin', '@begin', 'ImportDatainMenuTable').
+annotation(76, 1, 62, 'desc', '@desc', 'Import data in the Menu table.').
+annotation(77, 1, 63, 'in', '@in', 'EmptyMenutable').
+annotation(78, 1, 64, 'in', '@in', 'DataCleanMenu.csv').
+annotation(79, 1, 64, 'uri', '@uri', 'file://OpenRefine/DataCleanMenu.csv').
+annotation(80, 1, 65, 'out', '@out', 'PopulatedMenuTable').
+annotation(81, 1, 65, 'uri', '@uri', 'sqlite://nypl.db/Menu').
+annotation(82, 1, 66, 'end', '@end', 'ImportDatainMenuTable').
+annotation(83, 1, 68, 'begin', '@begin', 'ImportDatainMenuItemTable').
+annotation(84, 1, 68, 'desc', '@desc', 'Import data in the MenuItem table.').
+annotation(85, 1, 69, 'in', '@in', 'EmptyMenuItemtable').
+annotation(86, 1, 70, 'in', '@in', 'DataCleanMenuItem.csv').
+annotation(87, 1, 70, 'uri', '@uri', 'file://OpenRefine/DataCleanMenuItem.csv').
+annotation(88, 1, 71, 'out', '@out', 'PopulatedMenuItemTable').
+annotation(89, 1, 71, 'uri', '@uri', 'sqlite://nypl.db/PopulatedMenuItemTable').
+annotation(90, 1, 72, 'end', '@end', 'ImportDatainMenuItemTable').
+annotation(91, 1, 74, 'begin', '@begin', 'ImportDatainMenuPageTable').
+annotation(92, 1, 74, 'desc', '@desc', 'Import data in the MenuPage table.').
+annotation(93, 1, 75, 'in', '@in', 'EmptyMenuPagetable').
+annotation(94, 1, 76, 'in', '@in', 'MenuPage.csv').
+annotation(95, 1, 76, 'uri', '@uri', 'file://rawdata/MenuPage.csv').
+annotation(96, 1, 77, 'out', '@out', 'PopulatedMenuPageTable').
+annotation(97, 1, 77, 'uri', '@uri', 'sqlite://nypl.db/PopulatedMenuPageTable').
+annotation(98, 1, 78, 'end', '@end', 'ImportDatainMenuPageTable').
+annotation(99, 1, 80, 'begin', '@begin', 'IntegrityConstraintsCheck').
+annotation(100, 1, 80, 'desc', '@desc', 'Apply logical inegrity constraints on the data in the tables').
+annotation(101, 1, 81, 'in', '@in', 'PopulatedMenuTable').
+annotation(102, 1, 81, 'uri', '@uri', 'sqlite://nypl.db/PopulatedMenuTable').
+annotation(103, 1, 82, 'in', '@in', 'PopulatedDishTable').
+annotation(104, 1, 82, 'uri', '@uri', 'sqlite://nypl.db/PopulatedDishTable').
+annotation(105, 1, 83, 'in', '@in', 'PopulatedMenuPageTable').
+annotation(106, 1, 83, 'uri', '@uri', 'sqlite://nypl.db/MenuPage').
+annotation(107, 1, 84, 'in', '@in', 'PopulatedMenuItemTable').
+annotation(108, 1, 84, 'uri', '@uri', 'sqlite://nypl.db/MenuItem').
+annotation(109, 1, 85, 'param', '@param', 'IntegrityConstraintsScript').
+annotation(110, 1, 86, 'out', '@out', 'Menu').
+annotation(111, 1, 86, 'uri', '@uri', 'sqlite://nypl.db/Menu').
+annotation(112, 1, 87, 'out', '@out', 'Dish').
+annotation(113, 1, 87, 'uri', '@uri', 'sqlite://nypl.db/Dish').
+annotation(114, 1, 88, 'out', '@out', 'MenuItem').
+annotation(115, 1, 88, 'uri', '@uri', 'sqlite://nypl.db/MenuItem').
+annotation(116, 1, 89, 'out', '@out', 'MenuPage').
+annotation(117, 1, 89, 'uri', '@uri', 'sqlite://nypl.db/MenuPage').
+annotation(118, 1, 90, 'end', '@end', 'IntegrityConstraintsCheck').
+annotation(119, 1, 91, 'out', '@out', 'Menu').
+annotation(120, 1, 91, 'uri', '@uri', 'sqlite://nypl.db/Menu').
+annotation(121, 1, 92, 'out', '@out', 'Dish').
+annotation(122, 1, 92, 'uri', '@uri', 'sqlite://nypl.db/Dish').
+annotation(123, 1, 93, 'out', '@out', 'MenuItem').
+annotation(124, 1, 93, 'uri', '@uri', 'sqlite://nypl.db/MenuItem').
+annotation(125, 1, 94, 'out', '@out', 'MenuPage').
+annotation(126, 1, 94, 'uri', '@uri', 'sqlite://nypl.db/MenuPage').
+annotation(127, 1, 95, 'end', '@end', 'NYPL_DataCleanup').
+
+% FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
+annotation_qualifies(2, 1).
+annotation_qualifies(4, 3).
+annotation_qualifies(6, 5).
+annotation_qualifies(8, 7).
+annotation_qualifies(10, 9).
+annotation_qualifies(12, 11).
+annotation_qualifies(14, 13).
+annotation_qualifies(16, 15).
+annotation_qualifies(18, 17).
+annotation_qualifies(20, 19).
+annotation_qualifies(24, 23).
+annotation_qualifies(29, 28).
+annotation_qualifies(34, 33).
+annotation_qualifies(39, 38).
+annotation_qualifies(44, 43).
+annotation_qualifies(47, 46).
+annotation_qualifies(50, 49).
+annotation_qualifies(53, 52).
+annotation_qualifies(56, 55).
+annotation_qualifies(59, 58).
+annotation_qualifies(62, 61).
+annotation_qualifies(65, 64).
+annotation_qualifies(68, 67).
+annotation_qualifies(71, 70).
+annotation_qualifies(73, 72).
+annotation_qualifies(76, 75).
+annotation_qualifies(79, 78).
+annotation_qualifies(81, 80).
+annotation_qualifies(84, 83).
+annotation_qualifies(87, 86).
+annotation_qualifies(89, 88).
+annotation_qualifies(92, 91).
+annotation_qualifies(95, 94).
+annotation_qualifies(97, 96).
+annotation_qualifies(100, 99).
+annotation_qualifies(102, 101).
+annotation_qualifies(104, 103).
+annotation_qualifies(106, 105).
+annotation_qualifies(108, 107).
+annotation_qualifies(111, 110).
+annotation_qualifies(113, 112).
+annotation_qualifies(115, 114).
+annotation_qualifies(117, 116).
+annotation_qualifies(120, 119).
+annotation_qualifies(122, 121).
+annotation_qualifies(124, 123).
+annotation_qualifies(126, 125).

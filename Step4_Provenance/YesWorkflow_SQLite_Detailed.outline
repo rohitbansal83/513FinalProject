@@ -1,0 +1,95 @@
+# @begin NYPL_SQLWorkflow  @desc Workflow for all the database operations performed on the cleansed files.
+# @in DataCleanDish.csv  @uri file://OpenRefine/DataCleanDish.csv
+# @in DataCleanMenu.csv  @uri file://OpenRefine/DataCleanMenu.csv
+# @in DataCleanMenuItem.csv  @uri file://OpenRefine/DataCleanMenuItem.csv
+# @in MenuPage.csv  @uri file://rawdata/MenuPage.csv
+
+
+#     @begin CreateDBModel  @desc Analyze all the files and identify the relationships between all the four tables and Create a schema NYPL.
+#     @in MenuPage.csv  @uri file://rawdata/MenuPage.csv
+#     @in DataCleanMenuItem.csv  @uri file://OpenRefine/DataCleanMenuItem.csv
+#     @in DataCleanDish.csv  @uri file://OpenRefine/DataCleanDish.csv
+#     @in DataCleanMenu.csv  @uri file://OpenRefine/DataCleanMenu.csv
+#     @out DBModel&NYPLSchema
+#     @end CreateDBModel
+
+#     @begin SQLOperationDishDataAnalysis  @desc Analyze the cleansed Dish Data file for SQL Operations
+#     @param DBModel&NYPLSchema
+#     @out DishTableSQLScript
+#     @end SQLOperationsOnDish
+
+#     @begin SQLOperationsMenuDataAnalysis  @desc Analyze the cleansed Menu Data file for SQL Operations
+#     @out MenuTableSQLScript
+#     @param DBModel&NYPLSchema
+#     @end SQLOperationsMenuDataAnalysis
+
+#     @begin SQLOperationsOnMenuItemDataAnalysis  @desc Analyze the cleansed MenuItem Data file for SQL Operations
+#     @out MenuItemTableSQLScript
+#     @param DBModel&NYPLSchema
+#     @end SQLOperationsOnMenuItemDataAnalysis
+
+#     @begin SQLOperationsOnMenuPageDataAnalysis  @desc Analyze the MenuPage Data file for SQL Operations
+#     @param DBModel&NYPLSchema 
+#     @out MenuPageTableSQLScript
+#     @end SQLOperationsOnMenuPageDataAnalysis
+
+#     @begin CreateDishTable  @desc Create Dish table with Primary,Foreign Key and Not Null constraints.
+#     @in DishTableSQLScript
+#     @out EmptyDishtable  @uri sqlite://nypl.db/EmptyDishtable
+#     @end CreateDishTable
+
+#     @begin CreateMenuTable  @desc Create Menu table with Primary,Foreign Key and Not Null constraints.
+#     @in MenuTableSQLScript
+#     @out EmptyMenutable  @uri sqlite://nypl.db/EmptyMenutable
+#     @end CreateMenuTable
+
+#     @begin CreateMenuItemTable  @desc Create MenuItem table with Primary Key and Not Null constraints.
+#     @in MenuItemTableSQLScript
+#     @out EmptyMenuItemtable  @uri sqlite://nypl.db/EmptyMenuItemtable
+#     @end CreateMenuItemTable
+
+#     @begin CreateMenuPageTable  @desc Create MenuPage table with Primary,Foreign Key and Not Null constraints.
+#     @in MenuPageTableSQLScript
+#     @out EmptyMenuPagetable  @uri sqlite://nypl.db/EmptyMenuPagetable
+#     @end CreateMenuPageTable
+
+#     @begin ImportDatainDishTable  @desc Import data in the Dish table.
+#     @in EmptyDishtable
+#     @in DataCleanDish.csv  @uri file://OpenRefine/DataCleanDish.csv
+#     @out PopulatedDishTable  @uri sqlite://nypl.db/PopulatedDishTable
+#     @end ImportDatainDishTable
+
+#     @begin ImportDatainMenuTable  @desc Import data in the Menu table.
+#     @in EmptyMenutable
+#     @in DataCleanMenu.csv  @uri file://OpenRefine/DataCleanMenu.csv
+#     @out PopulatedMenuTable  @uri sqlite://nypl.db/Menu
+#     @end ImportDatainMenuTable
+
+#     @begin ImportDatainMenuItemTable  @desc Import data in the MenuItem table.
+#     @in EmptyMenuItemtable
+#     @in DataCleanMenuItem.csv  @uri file://OpenRefine/DataCleanMenuItem.csv
+#     @out PopulatedMenuItemTable  @uri sqlite://nypl.db/PopulatedMenuItemTable
+#     @end ImportDatainMenuItemTable
+
+#     @begin ImportDatainMenuPageTable  @desc Import data in the MenuPage table.
+#     @in EmptyMenuPagetable
+#     @in MenuPage.csv  @uri file://rawdata/MenuPage.csv
+#     @out PopulatedMenuPageTable  @uri sqlite://nypl.db/PopulatedMenuPageTable
+#     @end ImportDatainMenuPageTable
+
+#     @begin IntegrityConstraintsCheck  @desc Apply logical inegrity constraints on the data in the tables
+#     @in PopulatedMenuTable  @uri sqlite://nypl.db/PopulatedMenuTable
+#     @in PopulatedDishTable  @uri sqlite://nypl.db/PopulatedDishTable
+#     @in PopulatedMenuPageTable  @uri sqlite://nypl.db/MenuPage
+#     @in PopulatedMenuItemTable  @uri sqlite://nypl.db/MenuItem
+#     @param IntegrityConstraintsScript
+#     @out Menu  @uri sqlite://nypl.db/Menu
+#     @out Dish  @uri sqlite://nypl.db/Dish
+#     @out MenuItem  @uri sqlite://nypl.db/MenuItem
+#     @out MenuPage  @uri sqlite://nypl.db/MenuPage
+#     @end IntegrityConstraintsCheck
+# @out Menu  @uri sqlite://nypl.db/Menu
+# @out Dish  @uri sqlite://nypl.db/Dish
+# @out MenuItem  @uri sqlite://nypl.db/MenuItem
+# @out MenuPage  @uri sqlite://nypl.db/MenuPage
+# @end NYPL_DataCleanup

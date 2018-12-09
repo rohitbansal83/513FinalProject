@@ -1,0 +1,100 @@
+# @begin NYPL_Detailed_Cleanup  @desc Detailed Workflow for cleaning NYPL Menus DataSet using OpenRefine and Python.
+# @in Menu.csv  @uri file://rawdata/Menu.csv
+# @in Dish.csv  @uri file://rawdata/Dish.csv
+# @in MenuItem.csv  @uri file://rawdata/MenuItem.csv
+# @in MenuPage.csv  @uri file://rawdata/MenuPage.csv
+
+#     @begin PythonMenuDataCleanup  @desc Use Python script to clean Menu.csv
+#     @in Menu.csv  @uri file://rawdata/Menu.csv
+#     @param menuCleaningOperationsSequence
+#     @out Menu-clean.csv  @uri file://Clean_Data/Menu-clean.csv
+#     @end PythonMenuDataCleanup
+
+#     @begin Step1OpenRefineMenuDataCleanup  @desc Convert Date Field to Date
+#     @in Menu-clean.csv  @uri file://Clean_Data/Menu-clean.csv
+#     @out Step1DataCleanMenu.csv  @uri file://OpenRefine/Step1DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step2OpenRefineMenuDataCleanup  @desc Analyze Date field outliers and based on that remove outliers
+#     @in Step1DataCleanMenu.csv  @uri file://Clean_Data/Step1DataCleanMenu.csv
+#     @out Step2DataCleanMenu.csv  @uri file://OpenRefine/Step2DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step3OpenRefineMenuDataCleanup  @desc Use Clustering from open refine on column Sponsor
+#     @in Step2DataCleanMenu.csv  @uri file://Clean_Data/Step2DataCleanMenu.csv
+#     @out Step3DataCleanMenu.csv  @uri file://OpenRefine/Step3DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step4OpenRefineMenuDataCleanup  @desc  Use Clustering from open refine on column Event
+#     @in Step3DataCleanMenu.csv  @uri file://Clean_Data/Step3DataCleanMenu.csv
+#     @out Step4DataCleanMenu.csv  @uri file://OpenRefine/Step4DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step5penRefineMenuDataCleanup  @desc  Use Clustering from open refine on column Place
+#     @in Step4DataCleanMenu.csv  @uri file://Step4DataCleanMenu.csv
+#     @out Step5DataCleanMenu.csv  @uri file://OpenRefine/Step5DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step6OpenRefineMenuDataCleanup  @desc  Use Clustering from open refine on column Venue
+#     @in Step5DataCleanMenu.csv  @uri file://Clean_Data/Step5DataCleanMenu.csv
+#     @out Step6DataCleanMenu.csv  @uri file://OpenRefine/DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step7OpenRefineMenuDataCleanup  @desc  Use Clustering from open refine on column Occasion
+#     @in Step6DataCleanMenu.csv  @uri file://Clean_Data/Step6DataCleanMenu.csv
+#     @out Step7DataCleanMenu.csv  @uri file://OpenRefine/Step7DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step8OpenRefineMenuDataCleanup  @desc  Use Clustering from open refine on column Location
+#     @in Step7DataCleanMenu.csv  @uri file://Clean_Data/Step7DataCleanMenu.csv
+#     @out Step8DataCleanMenu.csv  @uri file://OpenRefine/Step8DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step9OpenRefineMenuDataCleanup  @desc  Use Clustering from open refine on column Name
+#     @in Step8DataCleanMenu.csv  @uri file://Clean_Data/Step8DataCleanMenu.csv
+#     @out Step9DataCleanMenu.csv  @uri file://OpenRefine/Step9DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin Step10OpenRefineMenuDataCleanup  @desc Split the physical_description column into 7 columns
+#     @in Step9DataCleanMenu.csv  @uri file://Clean_Data/Step9DataCleanMenu.csv
+#     @out DataCleanMenu.csv  @uri file://OpenRefine/DataCleanMenu.csv
+#     @end OpenRefineMenuDataCleanup
+
+#     @begin PythonDishDataCleanup  @desc Use Python script to clean Dish.csv
+#     @in Dish.csv  @uri file://rawdata/Dish.csv
+#     @param dishCleaningOperationsSequence
+#     @out Dish-clean.csv  @uri file://Clean_Data/Dish-clean.csv
+#     @end PythonDishDataCleanup
+
+#     @begin Step1OpenRefineDishDataCleanup  @desc Transform data to remove unwanted characters
+#     @in Dish-clean.csv  @uri file://Clean_Data/Dish-clean.csv
+#     @out Step1DataCleanDish.csv  @uri file://OpenRefine/Step1DataCleanDish.csv
+#     @end Step1OpenRefineDishDataCleanup
+
+#     @begin Step2OpenRefineDishDataCleanup  @desc Use Clustering from open refine on column Name
+#     @in Step1DataCleanDish.csv  @uri file://Clean_Data/Step1DataCleanDish.csv
+#     @out DataCleanDish.csv  @uri file://OpenRefine/DataCleanDish.csv
+#     @end Step1OpenRefineDishDataCleanup
+
+#     @begin Step1OpenRefineMenuItemDataCleanup  @desc Transform created_at field to date by creating a new filed created_date
+#     @in MenuItem.csv  @uri file:///MenuItem.csv
+#     @param menuItemCleaningOperationsSequence
+#     @out Step1DataCleanMenuItem.csv  @uri file://OpenRefine/Step1DataCleanMenuItem.csv
+#     @end Step1OpenRefineMenuItemDataCleanup
+
+#     @begin Step2OpenRefineMenuItemDataCleanup  @desc Transform updated_at field to date by creating a new filed updated_date.
+#     @in Step1DataCleanMenuItem.csv  @uri file:///Step1DataCleanMenuItem.csv
+#     @out Step2DataCleanMenuItem.csv  @uri file://OpenRefine/Step2DataCleanMenuItem.csv
+#     @end Step2OpenRefineMenuItemDataCleanup
+
+#     @begin Step3OpenRefineMenuItemDataCleanup  @desc Transform xpos field to number
+#     @in Step2DataCleanMenuItem.csv  @uri file:///Step2DataCleanMenuItem.csv
+#     @out Step3DataCleanMenuItem.csv  @uri file://OpenRefine/Step3DataCleanMenuItem.csv
+#     @end Step3OpenRefineMenuItemDataCleanup
+
+#     @begin Step4OpenRefineMenuItemDataCleanup  @desc Transform ypos field to number
+#     @in Step3DataCleanMenuItem.csv  @uri file:///Step3DataCleanMenuItem.csv
+#     @out DataCleanMenuItem.csv  @uri file://OpenRefine/DataCleanMenuItem.csv
+#     @end Step4OpenRefineMenuItemDataCleanup
+
+# @end NYPL_Detailed_Cleanup
