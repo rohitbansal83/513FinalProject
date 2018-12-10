@@ -35,5 +35,5 @@ Vertabelo 	https://my.vertabelo.com/
 # Results:
 
 The cleaned data can be accessed @ 
-https://public.tableau.com/profile/rohit.bansal#!/vizhome/ComarisionNYPLMenus/Comparision
+https://public.tableau.com/profile/rohit.bansal#!/vizhome/ComparisonNYPLDataset/Comparison
 
