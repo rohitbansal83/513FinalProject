@@ -30,7 +30,7 @@ YesWorkflow	http://try.yesworkflow.org/
 
 Tableau	2018.1.2	
 
-Vetabelo 	https://my.vertabelo.com/
+Vertabelo 	https://my.vertabelo.com/
 
 # Results:
 
