@@ -21,10 +21,15 @@ NYPL_DataSet (New York Public Library’s crowd-sourced historical menus dataset
 # Resources:
 
 Python	3.6.0	
-OpenRefine	2.6-rc.2	
+
+OpenRefine	2.6-rc.2
+
 SQLiteStudio	3.2.1	
+
 YesWorkflow	http://try.yesworkflow.org/
+
 Tableau	2018.1.2	
+
 Vetabelo 	https://my.vertabelo.com/
 
 # Results:
