@@ -1,11 +1,5 @@
 # CS513 Data Cleaning Final Project
 
-
-# Data Source: 
-
-NYPL_DataSet (New York Public Library’s crowd-sourced historical menus dataset)
-
-
 # Team: 
 
 Rohit Bansal (rbansal3@illinois.edu) 
@@ -19,6 +13,10 @@ In the project we performed data cleaning operations on NYPL_DataSet using vario
 
 
 We did not intend to remove the ambiguity in the data. We did not want to remove ambiguity by making assumptions. For example, if we found an item as omelette 1 and omelette 2 then we did not try to merge it to “omelette”. The reason behind that was that these two could be a variant of omelette with different ingredient and sometime different size of servings.  Assuming them to represent one dish could hamper the data integrity.
+
+# Data Source: 
+
+NYPL_DataSet (New York Public Library’s crowd-sourced historical menus dataset)
 
 # Resources:
 
